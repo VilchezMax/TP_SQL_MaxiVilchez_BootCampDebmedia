@@ -1,4 +1,3 @@
-
 USE tpSQL
 
 CREATE VIEW vw_precios
@@ -10,8 +9,9 @@ SELECT
 	SUM(precio) AS sumaPrecios 
 FROM Alojamiento  WHERE precio IS NOT NULL;
 
+
 SELECT * FROM vw_precios;
 
-SELECT * FROM tpSQL.dbo.Alojamiento;
+
 
 

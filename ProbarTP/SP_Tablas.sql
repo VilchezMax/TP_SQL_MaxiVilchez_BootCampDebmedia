@@ -43,7 +43,7 @@ BEGIN
 	);
 
 	CREATE TABLE PoliticaCancelacion (
-	  polcancID INT PRIMARY KEY NOT NULL IDENTITY,
+	  polCancID INT PRIMARY KEY NOT NULL IDENTITY,
 	  politicaCancelacion VARCHAR(10)
 	);
 
