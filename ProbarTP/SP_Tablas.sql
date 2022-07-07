@@ -7,7 +7,7 @@ AS
 BEGIN
 	CREATE TABLE Alojamiento (
 	  ID INT PRIMARY KEY NOT NULL, --Elegi este valor arbitrario porque es el mayor de los 50 registros a ingresar
-	  hostID INT NOT NULL, --FK
+	  hostID BIGINT, --FK
 	  locacionID INT, --FK
 	  dispInmediata BIT,
 	  politicaCancID INT, --FK
@@ -17,7 +17,7 @@ BEGIN
 	  tarifaServicio INT,
 	  minNoches INT,
 	  disponibilidad365 INT,
-	  reglas VARCHAR(300),
+	  reglas VARCHAR(4000),
 	  nReviews INT,
 	  fechaUltimaReview DATE,
 	  reviewsPorMes FLOAT,
@@ -31,8 +31,8 @@ BEGIN
 	
 	
 	CREATE TABLE Host (
-	  hosID INT PRIMARY KEY NOT NULL,
-	  hostIdentidadVerficada VARCHAR(10),
+	  hosID BIGINT PRIMARY KEY NOT NULL,
+	  hostIdentidadVerficada VARCHAR(12),
 	  hostNombre VARCHAR(100),
 	  cantAlojamientosHost INT
 	);
@@ -51,8 +51,8 @@ BEGIN
 	  locID INT PRIMARY KEY NOT NULL,
 	  latitud INT,
 	  longitud INT,
-	  barrioId INT, --FK
-	  partidoId INT, --FK
+	  barrioID INT, --FK
+	  partidoID INT, --FK
 	  codPais VARCHAR(4) --FK
 	);
 	
@@ -74,5 +74,3 @@ BEGIN
 END ;
 
 EXEC sp_crearTablas
-
-INSERT INTO Alojamiento(id) VALUES()

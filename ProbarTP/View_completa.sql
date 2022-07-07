@@ -24,19 +24,19 @@ SELECT
 	titulo, --Lugar
 	hostID,
 	hostIdentidadVerficada , --HOST
-	hostNombre, --HOST
+	 hostNombre, --HOST
 	--locacionID 
 	--v_Locacion, -- VIEW. HAY QUE VER COMO ARTICULAR CON EL LocacionID DESEADO
-	partido , --Partido
-	barrio , --Barrio
-	latitud , --Locacion
-	longitud , --Locacion
-	pais, --Pais
-	codPais  --Locacion
+	Partido.partido , --Partido
+	Barrio.barrio , --Barrio
+	Locacion.latitud , --Locacion
+	Locacion.longitud , --Locacion
+	Pais.pais, --Pais
+	Locacion.codPais  --Locacion
 	-- FIN DE VIEW
 	dispInmediata,
 	politicaCancelacion , --PoliticaCancelacion 
-	tipoHabitacion, --Habitacion
+	hn.tipoHabitacion, --Habitacion
 	anioConstruccion,
 	precio,
 	tarifaServicio,
@@ -52,6 +52,6 @@ SELECT
 FROM Alojamiento a
 INNER JOIN Lugar lr ON (a.ID = lr.alojamientoID)
 INNER JOIN Host ht ON (a.hostID = ht.hosID)
-INNER JOIN PoliticaCancelacion pc ON (a.politicaCancID = pc.ID)
-INNER JOIN Habitacion hn ON (a.tipoHabID = hn.ID)
-INNER JOIN v_l ON (a.locacionID = v_l.ID)
+INNER JOIN PoliticaCancelacion pc ON (a.politicaCancID = pc.polCanID)
+INNER JOIN Habitacion hn ON (a.tipoHabID = hn.habID)
+INNER JOIN Locacion l  ON (a.locacionID = l.locID),(l.barrioId = Barrio.barID, l.partidoId = Partido.parID , l.codPais = Pais.codigoPais)
