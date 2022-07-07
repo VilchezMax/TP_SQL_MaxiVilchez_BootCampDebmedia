@@ -1,4 +1,4 @@
-USE tpSQL
+USE tpSQL;
 
 CREATE VIEW vw_precios
 AS

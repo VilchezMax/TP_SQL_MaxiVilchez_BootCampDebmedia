@@ -1,1 +1,3 @@
 # Debmedia-TPSQL
+
+ESTADO: TERMINADO.

@@ -29,7 +29,6 @@ BEGIN
 	  titulo VARCHAR(100)
 	);
 	
-	
 	CREATE TABLE Host (
 	  hosID BIGINT PRIMARY KEY NOT NULL IDENTITY,
 	  hostIdentidadVerficada VARCHAR(12),

@@ -1,4 +1,4 @@
-USE tpSQL
+USE tpSQL;
 
 CREATE PROCEDURE sp_insertarData
 AS
@@ -19,7 +19,6 @@ BEGIN
 	(5,'Bronx');
 	SET IDENTITY_INSERT Partido OFF;
 
-	
 	-- BARRIO: 
 	/* Hay mas de 50 porque primero separe por barrio y luego seleccione las 50 filas a ingresar.
 	 * Estoy con poco tiempo, volver a hacer todo demoraria mucho y considero que el concepto está. */
@@ -252,8 +251,6 @@ BEGIN
 	(224,'Chelsea, Staten Island');
 	SET IDENTITY_INSERT Barrio OFF;
 
-
-	
 	--LOCACION
 	SET IDENTITY_INSERT Locacion ON;
 	INSERT INTO Locacion (locID,latitud,longitud,barrioID,partidoID,codPais)
@@ -432,7 +429,6 @@ BEGIN
 	(4,'Hotel room');
 	SET IDENTITY_INSERT Habitacion OFF;
 
-	
 	--PoliticaCancelacion
 	SET IDENTITY_INSERT PoliticaCancelacion ON;
 	INSERT INTO PoliticaCancelacion (polcancID,politicaCancelacion)
@@ -498,6 +494,7 @@ BEGIN
 	(1027846,42134614458,49,1,2,2,2019,459,92,null,32,'No smoking, please. No drugs or guns allowed.  Only registered guests allowed; no other visitors please.  We cannot accommodate pets as I already have two. Cat:  OK to let Bella out of the house.  Dog:  Please dont let Moe out of the house. Hed like to run to the street. He is also a bit noisy when visitors arrive. Please say hi and then ignore him and hell calm down.  No candles or incense burning.  Kitchen:  you are welcome to use kitchen and appliances between 7a and 9p, except no stove use for cooking meals please.',61,'2019-06-21',52,null),
 	(1028399,53466382920,50,0,2,2,2015,363,73,null,85,'No smoking. No pet. No shoes in the house. Visitors are permitted in the common area only. Please use the dining room to enjoy your meals. Also please refrain using an electronic device while having your meal. Quiet time between 10:00pm-6:00am.',11,'2019-06-22',1,1);
 	SET IDENTITY_INSERT Alojamiento OFF
+	
 END;
 
 EXEC sp_insertarData;
