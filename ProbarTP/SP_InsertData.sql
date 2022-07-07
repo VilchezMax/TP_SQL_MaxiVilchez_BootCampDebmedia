@@ -1,13 +1,3 @@
-/*CREATE PROCEDURE sp_insertarData /*PARAMETROS...DATA DEL CSV? COMO LOS IMPORTO?*/
-AS
-DECLARE @Counter INT
-SET @Counter=1
-WHILE (@Counter<50)
-BEGIN
-	
-	SET @Counter  = @Counter  + 1
-END
-*/
 USE tpSQL
 
 CREATE PROCEDURE sp_insertarData
@@ -16,9 +6,10 @@ BEGIN
 	-- PAIS
 	INSERT INTO Pais (codigoPais,pais) 
 	VALUES 
-	('US','United States')
+	('US','United States');
 
 	-- PARTIDO
+	SET IDENTITY_INSERT Partido ON;
 	INSERT INTO Partido (parID,partido) 
 	VALUES
 	(1,'Brooklyn'),
@@ -26,11 +17,13 @@ BEGIN
 	(3,'Queens'),
 	(4,'Staten Island'),
 	(5,'Bronx');
+	SET IDENTITY_INSERT Partido OFF;
 
 	
 	-- BARRIO: 
 	/* Hay mas de 50 porque primero separe por barrio y luego seleccione las 50 filas a ingresar.
 	 * Estoy con poco tiempo, volver a hacer todo demoraria mucho y considero que el concepto está. */
+	SET IDENTITY_INSERT Barrio ON;
 	INSERT INTO Barrio (barID,barrio) 
 	VALUES
 	(1,'Kensington'),
@@ -256,11 +249,13 @@ BEGIN
 	(221,'Willowbrook'),
 	(222,'Glen Oaks'),
 	(223,'Gerritsen Beach'),
-	(224,'Chelsea, Staten Island')
+	(224,'Chelsea, Staten Island');
+	SET IDENTITY_INSERT Barrio OFF;
 
 
 	
 	--LOCACION
+	SET IDENTITY_INSERT Locacion ON;
 	INSERT INTO Locacion (locID,latitud,longitud,barrioID,partidoID,codPais)
 	VALUES
 	(1,4064749,-7397237,209,1,'US'),
@@ -313,9 +308,10 @@ BEGIN
 	(48,4074771,-739474,212,5,'US'),
 	(49,4068111,-7395591,141,1,'US'),
 	(50,4068554,-739409,141,1,'US');
-
+	SET IDENTITY_INSERT Locacion OFF;
 
 	--Host
+	SET IDENTITY_INSERT Host ON;
 	INSERT INTO Host (hosID, hostIdentidadVerficada,hostNombre,cantAlojamientosHost) 
 	VALUES
 	(80014485718,'unconfirmed','Madaline',6),
@@ -368,8 +364,10 @@ BEGIN
 	(81253735818,'unconfirmed','Victoria',1),
 	(42134614458,'verified','Jared',1),
 	(53466382920,'verified','Chloe',1);
+	SET IDENTITY_INSERT Host OFF;
 
 	--Lugar
+	SET IDENTITY_INSERT Lugar ON;
 	INSERT INTO Lugar (AlojamientoID,titulo)
 	VALUES
 	(1001254,'Clean & quiet apt home by the park'),
@@ -422,30 +420,30 @@ BEGIN
 	(1027294,'1 Stop fr. Manhattan! Private Suite,Landmark Block'),
 	(1027846,'Charming Brownstone 3 - Near PRATT'),
 	(1028399,'bright and stylish duplex');
+	SET IDENTITY_INSERT Lugar OFF;
 
 	--Habitacion
+	SET IDENTITY_INSERT Habitacion ON;
 	INSERT INTO Habitacion (habID,tipoHabitacion) 
 	VALUES
 	(1,'Private room'),
 	(2,'Entire home/apt'),
 	(3,'Shared room'),
 	(4,'Hotel room');
+	SET IDENTITY_INSERT Habitacion OFF;
 
 	
 	--PoliticaCancelacion
+	SET IDENTITY_INSERT PoliticaCancelacion ON;
 	INSERT INTO PoliticaCancelacion (polcancID,politicaCancelacion)
 	VALUES
 	(1,'strict'),
 	(2,'moderate'),
 	(3,'flexible');
+	SET IDENTITY_INSERT PoliticaCancelacion OFF;
 	
 	--ALOJAMIENTO
- 	SET IDENTITY_INSERT Alojamiento ON
- 	
- 	/*INSERT INTO Alojamiento (ID) VALUES (1001254);
- 	insert into Alojamiento (hostID) VALUES (80014485718);
- 	INSERT INTO Alojamiento (fechaUltimaReview) VALUES (try_convert(date, '20201004', 104))*/
- 	
+	SET IDENTITY_INSERT Alojamiento ON;
 	INSERT INTO Alojamiento
 	(ID,hostID,locacionID,dispInmediata,politicaCancID,tipoHabID,anioConstruccion,precio,tarifaServicio,minNoches,disponibilidad365,reglas,nReviews,fechaUltimaReview,reviewsPorMes,promedioPuntaje)
 	VALUES
@@ -499,8 +497,8 @@ BEGIN
 	(1027294,81253735818,48,1,3,1,2022,916,183,null,26,'The room is 1ly non-smoking, however, you can smoke in the back porch. No drugs! No visitors without previous authorization. We do prefer adults since the house is not "child proof" and, we are full time workers. Babies OK!  Please, keep in mind that, this is not a hotel.  The room should be left in good condition and picked up when you leave.  Longer term renters use of kitchen and other facilities can be arranged.',248,'2019-06-20',225,null),
 	(1027846,42134614458,49,1,2,2,2019,459,92,null,32,'No smoking, please. No drugs or guns allowed.  Only registered guests allowed; no other visitors please.  We cannot accommodate pets as I already have two. Cat:  OK to let Bella out of the house.  Dog:  Please dont let Moe out of the house. Hed like to run to the street. He is also a bit noisy when visitors arrive. Please say hi and then ignore him and hell calm down.  No candles or incense burning.  Kitchen:  you are welcome to use kitchen and appliances between 7a and 9p, except no stove use for cooking meals please.',61,'2019-06-21',52,null),
 	(1028399,53466382920,50,0,2,2,2015,363,73,null,85,'No smoking. No pet. No shoes in the house. Visitors are permitted in the common area only. Please use the dining room to enjoy your meals. Also please refrain using an electronic device while having your meal. Quiet time between 10:00pm-6:00am.',11,'2019-06-22',1,1);
-
+	SET IDENTITY_INSERT Alojamiento OFF
 END;
 
-EXEC sp_insertarData
+EXEC sp_insertarData;
 

@@ -6,7 +6,7 @@ CREATE PROCEDURE sp_crearTablas
 AS
 BEGIN
 	CREATE TABLE Alojamiento (
-	  ID INT PRIMARY KEY NOT NULL, --Elegi este valor arbitrario porque es el mayor de los 50 registros a ingresar
+	  ID INT PRIMARY KEY NOT NULL IDENTITY, 
 	  hostID BIGINT, --FK
 	  locacionID INT, --FK
 	  dispInmediata BIT,
@@ -25,30 +25,30 @@ BEGIN
 	  );
 
 	CREATE TABLE Lugar (
-	  alojamientoID INT NOT NULL, --FK
+	  alojamientoID INT NOT NULL IDENTITY, --FK
 	  titulo VARCHAR(100)
 	);
 	
 	
 	CREATE TABLE Host (
-	  hosID BIGINT PRIMARY KEY NOT NULL,
+	  hosID BIGINT PRIMARY KEY NOT NULL IDENTITY,
 	  hostIdentidadVerficada VARCHAR(12),
 	  hostNombre VARCHAR(100),
 	  cantAlojamientosHost INT
 	);
 
 	CREATE TABLE Habitacion (
-	 habID INT PRIMARY KEY NOT NULL,
+	 habID INT PRIMARY KEY NOT NULL IDENTITY,
 	 tipoHabitacion VARCHAR(20)
 	);
 
 	CREATE TABLE PoliticaCancelacion (
-	  polcancID INT PRIMARY KEY NOT NULL,
+	  polcancID INT PRIMARY KEY NOT NULL IDENTITY,
 	  politicaCancelacion VARCHAR(10)
 	);
 
 	CREATE TABLE Locacion (
-	  locID INT PRIMARY KEY NOT NULL,
+	  locID INT PRIMARY KEY NOT NULL IDENTITY,
 	  latitud INT,
 	  longitud INT,
 	  barrioID INT, --FK
@@ -57,12 +57,12 @@ BEGIN
 	);
 	
 	CREATE TABLE Barrio (
-	  barID INT PRIMARY KEY NOT NULL,
+	  barID INT PRIMARY KEY NOT NULL IDENTITY,
 	  barrio VARCHAR(40)
 	);
 	
 	CREATE TABLE Partido (
-	  parID INT PRIMARY KEY NOT NULL,
+	  parID INT PRIMARY KEY NOT NULL IDENTITY,
 	  partido VARCHAR(40)
 	);
 	
@@ -73,4 +73,4 @@ BEGIN
 
 END ;
 
-EXEC sp_crearTablas
+EXEC sp_crearTablas;

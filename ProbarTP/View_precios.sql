@@ -1,4 +1,4 @@
--- 5) Cree una vista con el precio promedio, máximo, mínimo y total.
+
 USE tpSQL
 
 CREATE VIEW vw_precios
@@ -9,4 +9,9 @@ SELECT
 	MIN(precio) AS minPrecio,
 	SUM(precio) AS sumaPrecios 
 FROM Alojamiento  WHERE precio IS NOT NULL;
+
+SELECT * FROM vw_precios;
+
+SELECT * FROM tpSQL.dbo.Alojamiento;
+
 
